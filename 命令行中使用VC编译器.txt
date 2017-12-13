@@ -1,0 +1,23 @@
+（假设vs2012安装在 D:\Program Files (x86)\Microsoft Visual Studio 12.0）
+
+set VS_HOME=D:\Program Files (x86)\Microsoft Visual Studio 12.0
+
+1.设置环境变量 
+rem %VS_HOME%\VC\bin是cl.exe的目录
+rem %VS_HOME%\Common7\IDE动态链接库文件mspdb100.dll的目录（你的可能是mspdb60.dll或mspdb80.dll）
+set PATH=%VS_HOME%\VC\bin; %VS_HOME%\Common7\IDE; %PATH%
+set lib=%VC_HOME%\VC\lib
+set include=%VC_HOME%\VC\include
+
+连接时无法打开“kernel32.lib”文件，则将C:\ProgramFiles (x86)\MicrosoftSDKs\Windows\v7.0A\Lib目录下的Kernel32.Lib文件拷贝到C:\ProgramFiles (x86)\Microsoft Visual Studio 12.0\VC\lib下即可。
+
+
+hello.c
+#include <stdio.h>
+int main()
+{
+  printf("hello world\n");
+  return 0;
+}
+
+cl hello.c
